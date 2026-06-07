@@ -1,10 +1,15 @@
 #!/bin/sh
+set -e
 cd /var/www/html
 
 touch .env
 
-touch /var/www/html/storage/database.sqlite
-chown www-data:www-data /var/www/html/storage/database.sqlite
+DB_FILE="${DB_DATABASE:-/var/www/html/storage/database.sqlite}"
+DB_DIR="$(dirname "$DB_FILE")"
+
+mkdir -p "$DB_DIR"
+touch "$DB_FILE"
+chown www-data:www-data "$DB_FILE"
 
 php artisan config:cache
 php artisan route:cache
