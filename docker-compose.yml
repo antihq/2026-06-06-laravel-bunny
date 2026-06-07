@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:80"
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - APP_KEY=base64:yYi2zp9n4WVurUAhTanOCB5oBqfKuqzRAKuUDce+xhE=
+      - DB_CONNECTION=sqlite
+    volumes:
+      - app-database:/var/www/html/database
+      - app-storage:/var/www/html/storage
+
+volumes:
+  app-database:
+  app-storage:
