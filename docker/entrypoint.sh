@@ -3,7 +3,8 @@ cd /var/www/html
 
 touch .env
 
-touch database/database.sqlite
+touch /var/www/html/storage/database.sqlite
+chown www-data:www-data /var/www/html/storage/database.sqlite
 
 php artisan config:cache
 php artisan route:cache

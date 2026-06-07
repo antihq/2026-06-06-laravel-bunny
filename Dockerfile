@@ -13,7 +13,7 @@ COPY . .
 
 RUN composer dump-autoload --optimize
 
-RUN chown -R www-data:www-data storage bootstrap/cache database
+RUN chown -R www-data:www-data storage bootstrap/cache
 
 COPY docker/nginx.conf /etc/nginx/http.d/default.conf
 COPY docker/supervisord.conf /etc/supervisord.conf
